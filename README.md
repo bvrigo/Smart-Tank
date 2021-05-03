@@ -382,7 +382,7 @@ Figure 6. Schematics of the Smart Tank circuit.
 
 ## Firmware Development
 
-```C
+```C++
 #include "mbed.h"
 #include "Servo.h"
 #include "Motor.h"
@@ -400,7 +400,7 @@ float servo_pos = 0.5;
 
 The first few lines of code serve to declare the libraries we are importing and the pins we are using. To control the servo we use the Mbed Servo library, and to control the DC motors responsible for movement we use a modified version of the Mbed Motor library. In our modification, shown in figure X, we removed the line that set the initial PWM period to 0.001 seconds, as there is only one PWM unit on the Mbed and the servo uses a specific pulse period to adjust it’s position. We also decided to not use RTOS to create multiple threads as we were getting runtime errors when using the Servo.h library, but that did not alter the expected performance of the tank since it did not need to perform any parallel actions. A variable called servo_pos was defined to determine the position of the servo.
 
-```C
+```C++
 void sound(){
     spkr = 0.5; // Set speaker volume to maximum
     for (float f = 1.0; f < 510; f +=25) {
@@ -409,7 +409,7 @@ void sound(){
         spkr = 0.5; // Solve some issues with changing volume
         wait(0.05); // Gives some time for the sound to play
     }
-    led =0; // Turn off LED
+    led = 0; // Turn off LED
     spkr = 0; // Turn off speaker
     spkr.period(0.02); // reset for servo
 }
@@ -417,7 +417,7 @@ void sound(){
 
 To make the sound and light effects, we created the subroutine “sound”. Using a for loop, the LEDs are rapidly turned on and off while the frequency of the sound emitted by the speaker is increased. This increase on the speaker frequency serves to create a “charging” sound effect before the cannon fires. The speaker is set to its maximum volume every loop iteration in order to avoid an issue in which the volume becomes low while playing the sound effect. At the end of the subroutine, the LEDs are turned off and the frequency of the PWM output is set to be the same as the one the Servo library uses.
 
-```C
+```C++
 void shoot(){
     sound(); // Play the sound before launching the ball
     fire = 1; // Turn on kicking mechanism
@@ -428,7 +428,7 @@ void shoot(){
 
 To better organize the code, we created a subroutine to control the kicking mechanism called “shoot”. It starts by calling the sound subroutine, then it turns on the DC motor to kick the ball, wait for a complete rotation, and finally turns off the DC motor.
 
-```C
+```C++
 int main(){
     servo = servo_pos; // Set servo initial position to center
     while(1) {
