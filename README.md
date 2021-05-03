@@ -362,7 +362,7 @@ All the connections of the individual components to the Mbed and their respectiv
 <p><span style="font-weight: 400;">+</span></p>
 </td>
 <td>
-<p><span style="font-weight: 400;">P25 [MBED] with 100 resistor in series</span></p>
+<p><span style="font-weight: 400;">p25 [MBED] with 100 resistor in series</span></p>
 </td>
 </tr>
 <tr>
@@ -371,6 +371,33 @@ All the connections of the individual components to the Mbed and their respectiv
 </td>
 <td>
 <p><span style="font-weight: 400;">Gnd</span></p>
+</td>
+</tr>
+<tr>
+<td rowspan="3">
+<p><span style="font-weight: 400;">Servo Motor</span></p>
+</td>
+<td>
+<p><span style="font-weight: 400;">+</span></p>
+</td>
+<td>
+<p><span style="font-weight: 400;">+6 V</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><span style="font-weight: 400;">-</span></p>
+</td>
+<td>
+<p><span style="font-weight: 400;">Gnd</span></p>
+</td>
+</tr>
+<tr>
+<td>
+<p><span style="font-weight: 400;">Control</span></p>
+</td>
+<td>
+<p><span style="font-weight: 400;">p26</span></p>
 </td>
 </tr>
 </tbody>
