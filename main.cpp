@@ -44,7 +44,7 @@ int main(){
             char c;
             c = blue.getc(); // Check first character
             if (c == '!') {
-                c = blue.getc(); // Check seccond character
+                c = blue.getc(); // Check second character
                 if (c == 'B') {
                     c = blue.getc(); // Get which button was pressed/released
                     char press = blue.getc(); // Get if it was a release or press
