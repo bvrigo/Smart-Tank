@@ -1,4 +1,7 @@
 # Smart-Tank
+Lucas Katayama, Bruno Rigo, Arthur Siqueira
+
+![Bot](./images/tank.png)
 
 ## Summary
 
@@ -58,8 +61,28 @@ For assembling the Smart Tank, we mostly used prototyping equipment and material
   
 First, we assembled the tank cannon by using cardboard pieces and hot glue and then attached it to the servo. Then, we glued the guitar pick to a hole we made in the toy wheel, as shown in Figure 1. The next step is to attach the wheel to the motor’s axis and glue the motor to the cannon body. Finally, we can connect the LEDS to the tip of the cannon in the location shown in Figure 2. At the end, you would have a cannon barrel similar to the one shown in Figure 3.
 
+![Kicking Mechanism](./images/wheel.png)
+
+Figure 1. Close up of the kicking mechanism.
+
+![leds](./images/leds.png)
+
+Figure 2. Location of the LEDS.
+
+![cannon](./images/cannon.png)
+
+Figure 3. Close up of the cannon’s barrel.
+
 We assembled the Shadow Bot chassis by following the instructions of its [manufacturer](https://learn.sparkfun.com/tutorials/assembly-guide-for-redbot-with-shadow-chassis). With the chassis in hands, we attached a cardboard piece to cover the hole in its front and attached the servo on top of it. Then, we can attach all the batteries, the speaker and the breadboards to the chassis.
-   
+
+![Batteries](./images/battery.png)
+
+Figure 4. Batteries attached to the chassis.
+
+![Speaker](./images/speaker.png)
+
+Figure 5. Close-up of speaker and servo location on the Shadow Bot chassis.
+
 We then used two breadboards and three power supplies according to Figure INDEX to make the electrical stack of our system. A 6 V battery pack feeds the Class-D amplifier, the dual H-Bridge, the servo, and the speaker. A 9 V battery powers the Bluetooth module, and the Mbed. Another 9 V battery is used to provide energy to the Brushed DC motor in the kicking mechanism in order to launch the ping-ball a greater distance.
    
 All the connections of the individual components to the Mbed and their respective power supplies are listed on Table 1 and shown in the schematics in Figure 6.
@@ -352,6 +375,10 @@ All the connections of the individual components to the Mbed and their respectiv
 </tr>
 </tbody>
 </table>
+
+![Schematic](./images/diagram.png)
+
+Figure 6. Schematics of the Smart Tank circuit.
 
 ## Firmware Development
 
