@@ -5,7 +5,7 @@ Lucas Katayama, Bruno Rigo, Arthur Siqueira
 
 ## Summary
 
-The Smart Tank is a robot tank controlled by Bluetooth with the Bluefruit app. Through the app, the user can  move the robot by using the arrows on the interface and shoot the ball by pressing the “1” button. The robot is able to move by using two DC motors, move its barrel around a vertical axis with a servo motor, and shoot a ping pong ball by using a DC motor connected to a kicking mechanism. Additionally, when the robot shoots the ball, light and sound effects are emitted by using LEDs and a speaker with a Class-D amplifier. The robot is controlled by a single ARM Mbed.
+The Smart Tank is a robot tank controlled by Bluetooth with the Bluefruit app. Through the app, the user can move the robot by using the arrows on the interface and shoot the ball by pressing the “1” button. The robot is able to move by using two DC motors, move its barrel around a vertical axis with a servo motor, and shoot a ping pong ball by using a DC motor connected to a kicking mechanism. Additionally, when the robot shoots the ball, light and sound effects are emitted by using LEDs and a speaker with a Class-D amplifier. The robot is controlled by a single ARM Mbed.
 
 ## Parts List
 
@@ -33,7 +33,7 @@ The Smart Tank is a robot tank controlled by Bluetooth with the Bluefruit app. T
 
 1 x Guitar pick
 
-2 x Battery connector
+2 x Battery clip
 
 1 x 4xAA Battery Holder
 
@@ -59,7 +59,7 @@ Wires
 
 For assembling the Smart Tank, we mostly used prototyping equipment and materials that were easy to acquire. The team’s intention is to allow this project to be easily replicable. Thus, we created the following steps to instruct others with the system design.
   
-First, we assembled the tank cannon by using cardboard pieces and hot glue and then attached it to the servo. Then, we glued the guitar pick to a hole we made in the toy wheel, as shown in Figure 1. The next step is to attach the wheel to the motor’s axis and glue the motor to the cannon body. Finally, we can connect the LEDS to the tip of the cannon in the location shown in Figure 2. At the end, you would have a cannon barrel similar to the one shown in Figure 3.
+First, we assembled the tank cannon by using cardboard pieces and hot glue and then attached it to the servo. Then, we glued the guitar pick to a hole we made in the toy wheel, as shown in Figure 1. The next step is to attach the wheel to the motor’s axis and glue the motor to the cannon body. Finally, we can connect the LEDs to the tip of the cannon in the location shown in Figure 2. In the end, you would have a cannon barrel similar to the one shown in Figure 3.
 
 ![Kicking Mechanism](./images/wheel.png)
 
@@ -73,7 +73,7 @@ Figure 2. Location of the LEDS.
 
 Figure 3. Close up of the cannon’s barrel.
 
-We assembled the Shadow Bot chassis by following the instructions of its [manufacturer](https://learn.sparkfun.com/tutorials/assembly-guide-for-redbot-with-shadow-chassis). With the chassis in hands, we attached a cardboard piece to cover the hole in its front and attached the servo on top of it. Then, we can attach all the batteries, the speaker and the breadboards to the chassis.
+We assembled the Shadow Bot chassis by following the instructions of its [manufacturer](https://learn.sparkfun.com/tutorials/assembly-guide-for-redbot-with-shadow-chassis). With the chassis in hands, we attached a cardboard piece to cover the hole in its front and attached the servo on top of it. Then, we can attach all the batteries, the speaker, and the breadboards to the chassis.
 
 ![Batteries](./images/battery.png)
 
@@ -83,9 +83,9 @@ Figure 4. Batteries attached to the chassis.
 
 Figure 5. Close-up of speaker and servo location on the Shadow Bot chassis.
 
-We then used two breadboards and three power supplies according to Figure INDEX to make the electrical stack of our system. A 6 V battery pack feeds the Class-D amplifier, the dual H-Bridge, the servo, and the speaker. A 9 V battery powers the Bluetooth module, and the Mbed. Another 9 V battery is used to provide energy to the Brushed DC motor in the kicking mechanism in order to launch the ping-ball a greater distance.
+We then used two breadboards and three power supplies according to make the electrical stack of our system. A 6 V battery pack feeds the Class-D amplifier, the dual H-Bridge, the servo, and the speaker. A 9 V battery powers the Bluetooth module, and the Mbed. Another 9 V battery is used to provide energy to the Brushed DC motor in the kicking mechanism in order to launch the ping-ball a greater distance.
    
-All the connections of the individual components to the Mbed and their respective power supplies are listed on Table 1 and shown in the schematics in Figure 6.
+All the connections of the individual components to the Mbed and their respective power supplies are listed in Table 1 and shown in the schematics in Figure 6.
 
 **Table 1: Component connections**
 <table>
@@ -398,7 +398,7 @@ DigitalOut fire(p11); // DC motor for kicking
 float servo_pos = 0.5;
 ```
 
-The first few lines of code serve to declare the libraries we are importing and the pins we are using. To control the servo we use the Mbed Servo library, and to control the DC motors responsible for movement we use a modified version of the Mbed Motor library. In our modification, shown in figure X, we removed the line that set the initial PWM period to 0.001 seconds, as there is only one PWM unit on the Mbed and the servo uses a specific pulse period to adjust it’s position. We also decided to not use RTOS to create multiple threads as we were getting runtime errors when using the Servo.h library, but that did not alter the expected performance of the tank since it did not need to perform any parallel actions. A variable called servo_pos was defined to determine the position of the servo.
+The first few lines of code serve to declare the libraries we are importing and the pins we are using. To control the servo we use the Mbed Servo library, and to control the DC motors responsible for movement we use a modified version of the Mbed Motor library. In our modification, we removed the line that set the initial PWM period to 0.001 seconds, as there is only one PWM unit on the Mbed and the servo uses a specific pulse period to adjust its position. We also decided to not use RTOS to create multiple threads as we were getting runtime errors when using the Servo.h library, but that did not alter the expected performance of the tank since it did not need to perform any parallel actions. Moreover, a variable called servo_pos was defined to determine the position of the servo.
 
 ```C++
 void sound(){
@@ -415,7 +415,7 @@ void sound(){
 }
 ```
 
-To make the sound and light effects, we created the subroutine “sound”. Using a for loop, the LEDs are rapidly turned on and off while the frequency of the sound emitted by the speaker is increased. This increase on the speaker frequency serves to create a “charging” sound effect before the cannon fires. The speaker is set to its maximum volume every loop iteration in order to avoid an issue in which the volume becomes low while playing the sound effect. At the end of the subroutine, the LEDs are turned off and the frequency of the PWM output is set to be the same as the one the Servo library uses.
+To make the sound and light effects, we created the subroutine “sound”. Using a for loop, the LEDs are rapidly turned on and off while the frequency of the sound emitted by the speaker is increased. This increase in the speaker frequency serves to create a “charging” sound effect before the cannon fires. The speaker is set to its maximum volume every loop iteration in order to avoid an issue in which the volume becomes low while playing the sound effect. At the end of the subroutine, the LEDs are turned off and the frequency of the PWM output is set to be the same as the one the Servo library uses.
 
 ```C++
 void shoot(){
@@ -426,7 +426,7 @@ void shoot(){
 }
 ```
 
-To better organize the code, we created a subroutine to control the kicking mechanism called “shoot”. It starts by calling the sound subroutine, then it turns on the DC motor to kick the ball, wait for a complete rotation, and finally turns off the DC motor.
+To better organize the code, we created a subroutine to control the kicking mechanism called “shoot”. It starts by calling the sound subroutine, then it turns on the DC motor to kick the ball, waits for a complete rotation, and finally turns off the DC motor.
 
 ```C++
 int main(){
@@ -510,7 +510,7 @@ int main(){
 }
 ```
 
-At the beginning of the main subroutine, the servo position is set to the center, so the cannon is always aligned to the tank axis when it is turned on. Then, the code waits for a bluetooth signal to be received. The signals are interpreted as shown in Table 2. The speed of the motors was set to 50% of its maximum when moving to allow for better control and less power consumption. One could potentially use a less powerful motor, but in this project we used the motors supplied with the class parts kit. Moreover, the servo position is guaranteed to be always set between 0 and 1 with the use of a ternary expression.
+At the beginning of the main subroutine, the servo position is set to the center, so the cannon is always aligned to the tank axis when it is turned on. Then, the code waits for a Bluetooth signal to be received. The signals are interpreted as shown in Table 2. The speed of the motors was set to 50% of its maximum when moving to allow for better control and less power consumption. One could potentially use a less powerful motor, but in this project, we used the motors supplied with the class parts kit, so we throttled its performance. Moreover, the servo position is guaranteed to be always set between 0 and 1 with the use of a ternary expression.
 
 **Table 2: Button codes and corresponding functionalities.**
 
@@ -527,5 +527,5 @@ At the beginning of the main subroutine, the servo position is set to the center
 
 ## Conclusion
 
-The Smart Tank managed to deliver a satisfactory performance while being easy to assemble. It serves as a great project to anyone who is seeking to get into embedded systems design, while creating something fun and fully customizable. In the future, we aim to include a reloading system, so the tank can shoot multiple ping pong balls, and a servo to turn the barrel around the horizontal axis.
+The Smart Tank managed to deliver a satisfactory performance while being easy to assemble. It serves as a great project for anyone who is seeking to get into embedded systems design while creating something fun and fully customizable. In the future, we aim to include a reloading system, so the tank can shoot multiple ping pong balls, and a servo to turn the barrel around the horizontal axis.
 
