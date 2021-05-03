@@ -83,7 +83,7 @@ Figure 4. Batteries attached to the chassis.
 
 Figure 5. Close-up of speaker and servo location on the Shadow Bot chassis.
 
-We then used two breadboards and three power supplies according to make the electrical stack of our system. A 6 V battery pack feeds the Class-D amplifier, the dual H-Bridge, the servo, and the speaker. A 9 V battery powers the Bluetooth module, and the Mbed. Another 9 V battery is used to provide energy to the Brushed DC motor in the kicking mechanism in order to launch the ping-ball a greater distance.
+We then used two breadboards and three power supplies according to make the electrical stack of our system. A 6 V battery pack feeds the Class-D amplifier, the dual H-Bridge, the servo, and the speaker. A 9 V battery powers the Bluetooth module, and the Mbed. Another 9 V battery is used to provide energy to the Brushed DC motor in the kicking mechanism in order to launch the ping-pong ball a greater distance.
    
 All the connections of the individual components to the Mbed and their respective power supplies are listed in Table 1 and shown in the schematics in Figure 6.
 
@@ -436,7 +436,7 @@ int main(){
             char c;
             c = blue.getc(); // Check first character
             if (c == '!') {
-                c = blue.getc(); // Check seccond character
+                c = blue.getc(); // Check second character
                 if (c == 'B') {
                     c = blue.getc(); // Get which button was pressed/released
                     char press = blue.getc(); // Get if it was a release or press
@@ -510,7 +510,7 @@ int main(){
 }
 ```
 
-At the beginning of the main subroutine, the servo position is set to the center, so the cannon is always aligned to the tank axis when it is turned on. Then, the code waits for a Bluetooth signal to be received. The signals are interpreted as shown in Table 2. The speed of the motors was set to 50% of its maximum when moving to allow for better control and less power consumption. One could potentially use a less powerful motor, but in this project, we used the motors supplied with the class parts kit, so we throttled its performance. Moreover, the servo position is guaranteed to be always set between 0 and 1 with the use of a ternary expression.
+At the beginning of the main subroutine, the servo position is set to the center, so the cannon is always aligned to the tank axis when it is turned on. Then, the code waits for a Bluetooth signal to be received. The signals are interpreted as shown in Table 2. The speed of the motors was set to 50% of its maximum when moving to allow for better control and less power consumption. One could potentially use a less powerful motor, but in this project, we used the motors supplied with the class parts kit, so we throttled their performance. Moreover, the servo position is guaranteed to be always set between 0 and 1 with the use of a ternary expression.
 
 **Table 2: Button codes and corresponding functionalities.**
 
