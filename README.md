@@ -83,7 +83,7 @@ Figure 4. Batteries attached to the chassis.
 
 Figure 5. Close-up of speaker and servo location on the Shadow Bot chassis.
 
-We then used two breadboards and three power supplies according to make the electrical stack of our system. A 6 V battery pack feeds the Class-D amplifier, the dual H-Bridge, the servo, and the speaker. A 9 V battery powers the Bluetooth module, and the Mbed. Another 9 V battery is used to provide energy to the Brushed DC motor in the kicking mechanism in order to launch the ping-pong ball a greater distance.
+We then used two breadboards and three power supplies to compose the electrical stack of our system. A 6 V battery pack feeds the the dual H-Bridge and the servo. A 9 V battery powers the Bluetooth module, and the Mbed. Another 9 V battery is used to provide energy to the Brushed DC motor in the kicking mechanism in order to launch the ping-pong ball a greater distance.
    
 All the connections of the individual components to the Mbed and their respective power supplies are listed in Table 1 and shown in the schematics in Figure 6.
 
@@ -554,5 +554,12 @@ At the beginning of the main subroutine, the servo position is set to the center
 
 ## Conclusion
 
-The Smart Tank managed to deliver a satisfactory performance while being easy to assemble. It serves as a great project for anyone who is seeking to get into embedded systems design while creating something fun and fully customizable. In the future, we aim to include a reloading system, so the tank can shoot multiple ping pong balls, and a servo to turn the barrel around the horizontal axis.
+The Smart Tank managed to deliver a satisfactory performance while being easy to assemble and replicate. It serves as a great project for anyone who is seeking to get into embedded systems design while creating something fun and fully customizable. In the future, we aim to include a reloading system, so the tank can shoot multiple ping pong balls, and a servo to turn the barrel around the horizontal axis.
 
+## Demonstrantion
+Here's a video demonstration of the Smart Tank functionalities:
+https://youtu.be/KQay2WWO-ro
+
+## Presentation 
+Here's video presentation where we summarize the whole project.
+https://youtu.be/u7TD_CRzwbw
